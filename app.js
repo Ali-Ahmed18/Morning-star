@@ -16,7 +16,7 @@ gsap.set("#zoom-in", { filter: "blur(0px)" ,opacity :"1"});
 
 // *******************************************************************
 var lastScrollTop = 0;
-window.addEventListener("scroll", function(){ 
+window.addEventListener("scroll", function(e){ 
     const totalHeight = document.body.offsetHeight - 657
     const currentHeight = window.pageYOffset
     let circleText = document.getElementById("circleText")
@@ -67,6 +67,8 @@ gsap.to("#zoom-in", {
 }, false);
 // *******************************************************************
 
+
+
 // *******************************************************************
 const toggleMenu = document.getElementById("toggle-menu")
 toggleMenu.addEventListener("click",function(e){
@@ -96,4 +98,23 @@ toggleMenu.addEventListener("click",function(e){
 
 
 // *******************************************************************
-// console.log(document.body.scrollHeight - 357);
+
+// ************Hover on Product****************
+const productLabels = document.querySelectorAll(".productLabels")
+productLabels.forEach((element)=>{
+    element.addEventListener("mouseover",mousein);
+    element.addEventListener("mouseout",mouseout);
+})
+
+function mousein(e){
+    let element = e.currentTarget 
+    let product = element.querySelector(".product")
+    product.style.backgroundColor = "#1b46c2"
+    element.querySelector(".product-circle").style.backgroundColor = "#1b46c2"
+}
+function mouseout(e){
+    let element = e.currentTarget 
+    let product = element.querySelector(".product")
+    product.style.backgroundColor = "#fff"
+    element.querySelector(".product-circle").style.backgroundColor = "#fff"
+}
