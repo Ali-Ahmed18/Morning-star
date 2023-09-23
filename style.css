@@ -10,24 +10,26 @@
 }
 html {
     scroll-behavior: smooth;
+    
 }
-body{
-    overflow-x: hidden;
-}
+
 .main{
     width: 80%;
     min-width: 85%;
     max-width: 1100px;
     margin: 0 auto;
-    position: relative;
+    overflow-x: hidden;
+
 }
 nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
-    position: sticky;
+    padding: 1rem 80px;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
 }
 .logo{
@@ -77,8 +79,7 @@ nav{
     padding-bottom: 0;
     left: 0 ;
     width: 100%;
-    height: 100vh;
-    transform: translateY(-5.5rem);
+    height: 75vh;
 }
 .container{
     z-index: 1;
@@ -547,8 +548,60 @@ nav{
 .teamTxt{
     margin-left: 1rem;
 }
-
-
+.overMission{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20rem 0;
+}
+.missionImg{
+    display: grid;
+    place-items: center;
+    width: 30%;
+}
+.missionText{
+    line-height: 1.5rem;
+    width: 70%;
+    max-width: 500px;
+}
+.missionText p{
+  border-left: 2px solid #2f4ec1;
+  padding-left: 20px;
+}
+.subscribe{
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    margin-top: 25rem;
+    margin-bottom: 10rem;
+    background-color: #1C41B1;
+    clip-path: polygon(2% 0, 100% 0, 100% 90%, 98% 100%, 0 100%, 0 10%);
+    padding: 2.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.emailInput{
+    display: flex;
+    gap: 10px;
+}
+.emailInput input{
+        padding: 10px;
+        background: transparent;
+        border: none;
+        font-size: 15px;
+}
+.emailInput input:focus{
+   outline: none;
+}
+.emailInput input::placeholder{
+   color: #fff;
+}
+.emailInput button{
+    padding: 0 20px;
+    clip-path: polygon(0% 0, 100% 0, 100% 76%, 83% 100%, 0 100%, 0 9%);
+}
 /* **************************For Scroll circle ************************************ */
 .single-chart {
     width: 130px;
@@ -655,6 +708,13 @@ nav{
     .productsWraper{
         column-gap: 1em;
     }
+   .missionText{
+    font-size: 13px;
+   }
+   .subscribe h1{
+            font-size: 6vw;
+            text-align: center;
+   }
   }
   @media screen and (max-width: 620px){
     .productLabels{
@@ -671,6 +731,9 @@ nav{
     }
   }
   @media screen and (max-width: 550px){
+    nav{
+        padding: 1rem 7px;
+    }
     .productsWraper{
         grid-template-columns: 1fr;
         grid-row-gap: 0em;
@@ -688,5 +751,6 @@ nav{
     .teamCard:nth-child(2n) {
         margin-top: 0;
     }
+
   }
   /* *********************************************************** */

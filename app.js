@@ -1,18 +1,27 @@
 const {innerHeight} = window;
-const height = document.getElementById("zoom-in")
-gsap.to("#zoom-in", {
-    scale: 1.8, stagger: 0.25, duration: 3,
+const section = document.querySelector(".FirstSection");
+    const {scrollY} = window;    
+    let opacity =( 1 - (scrollY / section.offsetHeight).toFixed(1))
+    let calc  = ((scrollY * 100) / section.offsetHeight).toFixed(1)
+
+gsap.to(section, {
+    scale: 2,
+    stagger: 0.25,
+    duration: 3,
+    filter: `blur(5px)`,
+    opacity: `0`,
     scrollTrigger: {
-        trigger: "#zoom-in",
+        trigger: section,
         pin: true,
-        end: `+=${innerHeight * 1.3}`,
-        scrub: 3
+        start: "top top",
+        end: `bottom top`,
+        scrub: 1
     }
+    
 });
 
 
 
-gsap.set("#zoom-in", { filter: "blur(0px)" ,opacity :"1"});
 
 // *******************************************************************
 var lastScrollTop = 0;
@@ -23,31 +32,12 @@ window.addEventListener("scroll", function(e){
     let percentage = Math.floor((currentHeight / totalHeight) * 100)
     let circle = document.querySelector(".circle")
     circle.setAttribute("stroke-dasharray",`${percentage}, 100`)
-    if(percentage == 100){
+    if(percentage >= 97){
         circleText.innerHTML = `<a href="#top">Back To<br>Top &uarr;</a>`
     }else{
         circleText.innerHTML = `scroll<br>To Explore`
     }
 
-
-
-
-
-    const {scrollY} = window;    
-    let opacity =( 1 - (scrollY / height.offsetHeight).toFixed(1))
-    let calc  = ((scrollY * 10) / height.offsetHeight).toFixed(1)
-gsap.to("#zoom-in", {
-    
-  filter: `blur(${calc}px)`,
-  opacity: `${opacity}`,
-  scrollTrigger: {
-    trigger: "#zoom-in",
-    start: "top",
-    end: "bottom bottom",
-    scrub: true,
-  }
-  
-})
     
     let logo = document.querySelector(".logo")
    var st = window.pageYOffset || document.documentElement.scrollTop;
